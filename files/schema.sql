@@ -22,8 +22,9 @@ CREATE TABLE tag(
 
 CREATE TABLE artist(
  artist_id INTEGER PRIMARY KEY,
- a_name TEXT NOT NULL,
- a_info TEXT NOT NULL,
+ a_firstname TEXT NOT NULL,
+ a_lastname TEXT NOT NULL,
+ a_info TEXT,
  a_webpage TEXT
 );
 
@@ -83,3 +84,12 @@ CREATE TABLE mediaset_tag(
 
 INSERT INTO location_type (lt_type)
 VALUES ("url"),("filepath");
+
+INSERT INTO category (c_name)
+VALUES ('Nature'),('Portrait'),('Landscape');
+
+INSERT INTO tag (t_name)
+VALUES ('Squirrel'),('Mona Lisa'),('Stonehenge');
+
+INSERT INTO artist (a_firstname, a_lastname)
+VALUES ('John', 'Doe'), ('Jane', 'Doe');
