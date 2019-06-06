@@ -33,3 +33,19 @@ def requestList(listToPrint):
         print(res)
     cursor.close()
     connection.close()
+
+def runSearch(searchFrom, searchFor):
+    print('Searching: ' + str(searchFrom) + ' ' + searchFor)
+
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+    cursor.execute('SELECT {} FROM {} WHERE {} LIKE "%{}%"'.format(searchFrom[0],searchFrom[1],searchFrom[2],searchFor))
+
+    result = cursor.fetchall()
+    for res in result:
+        print(res)
+    cursor.close()
+    connection.close()
+
+def dumpDatabaseContent():
+    print("Todo")
