@@ -47,5 +47,13 @@ def runSearch(searchFrom, searchFor):
     cursor.close()
     connection.close()
 
-def dumpDatabaseContent():
+def insertToDatabase():
     print("Todo")
+
+def dumpDatabaseContent():
+    # https://stackoverflow.com/questions/4719159/python-and-sqlite3-importing-and-exporting-databases
+    print('Attempting backup to file: dump.sql')
+    connection = sqlite3.connect(db_file)
+    with open('dump.sql', 'w') as file:
+        for line in connection.iterdump():
+            file.write('%s\n' % line)

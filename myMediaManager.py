@@ -2,6 +2,7 @@ from files.db import initdb
 from files.db import dumpDatabaseContent
 from files.listMedia import listOptions
 from files.searchMedia import searchOptions
+from files.insertMedia import newData
 
 initdb()
 
@@ -33,12 +34,12 @@ if userinput == 1:
 elif userinput == 2:
     searchOptions()
 elif userinput == 3:
-    print('Insert')
+    newData()
 elif userinput == 4:
     print('Delete')
 elif userinput == 5:
-    print('Backup')
+    dumpDatabaseContent()
 elif userinput == 6:
     print('Quit')
 else:
-    print('Enter a number (1-5)')
+    print('Enter a number (1-6)')
