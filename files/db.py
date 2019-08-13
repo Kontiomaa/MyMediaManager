@@ -21,14 +21,12 @@ def initdb():
         print ('Database exists')
 
 def requestList(listToPrint):
-    #print('db params:')
-    #print(listToPrint)
-
     connection = sqlite3.connect(db_file)
     cursor = connection.cursor()
     cursor.execute('SELECT {} FROM {}'.format(listToPrint[0],listToPrint[1]))
 
     result = cursor.fetchall()
+    print("\nResult:")
     for res in result:
         print(res)
     cursor.close()
@@ -47,8 +45,15 @@ def runSearch(searchFrom, searchFor):
     cursor.close()
     connection.close()
 
-def insertToDatabase():
-    print("Todo")
+def insertToDatabase(table, name):
+    #print('Adding: ' + str(name) + ' to ' + str(table))
+
+    connection = sqlite3.connect(db_file)
+    cursor = connection.cursor()
+    cursor.execute('INSERT INTO {} ({}) VALUES (\'{}\')'.format(table[0],table[1],name))
+    connection.commit()
+    cursor.close()
+    connection.close()
 
 def dumpDatabaseContent():
     # https://stackoverflow.com/questions/4719159/python-and-sqlite3-importing-and-exporting-databases
